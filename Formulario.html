@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Formulário</title>
+  <style>
+    table,
+    th,
+    td {
+      border: 1px solid black;
+      border-collapse: collapse;
+      padding: 6px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+  <form id="meuForm">
+    <label>Nome:</label>
+    <input type="text" id="nome" required><br><br>
+
+    <label>E-mail:</label>
+    <input type="email" id="email" required><br><br>
+
+    <label>Área de Interesse:</label>
+    <input type="text" id="interesse" required><br><br>
+
+    <label>Turno:</label><br>
+    <input type="radio" name="turno" value="Manhã" checked> Manhã
+    <input type="radio" name="turno" value="Tarde"> Tarde
+    <input type="radio" name="turno" value="Noite"> Noite
+    <br><br>
+
+    <button type="submit">Enviar</button>
+  </form>
+
+  <br>
+
+  <table>
+    <tr>
+      <th>Nome</th>
+      <th>Email</th>
+      <th>Área</th>
+      <th>Turno</th>
+    </tr>
+    <tr>
+      <td id="nometabela"></td>
+      <td id="emailtabela"></td>
+      <td id="interessetabela"></td>
+      <td id="turnotabela"></td>
+    </tr>
+  </table>
+
+  <script>
+    const form = document.getElementById('meuForm');
+
+    form.onsubmit = function (event) {
+      event.preventDefault();
+
+      nometabela.textContent = nome.value;
+      emailtabela.textContent = email.value;
+      interessetabela.textContent = interesse.value;
+
+      turnotabela.textContent = form.turno.value;
+    };
+  </script>
+
+</body>
+
+</html>
