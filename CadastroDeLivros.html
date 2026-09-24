@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro de Livros</title>
+  <style>
+    table, th, td {
+      border: 1px solid #000;
+      border-collapse: collapse;
+      padding: 6px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Novo livro</h2>
+
+  <form id="formLivro">
+    <label>Título:</label><br>
+    <input type="text" id="titulo" placeholder="Digite..." required><br><br>
+
+    <label>Autor:</label><br>
+    <input type="text" id="autor" placeholder="Digite..." required><br><br>
+
+    <label>Gênero:</label><br>
+    <select id="genero" required>
+      <option value="">Escolha...</option>
+      <option value="Ficção">Ficção</option>
+      <option value="Romance">Romance</option>
+      <option value="Aventura">Aventura</option>
+    </select><br><br>
+
+    <label>
+      <input type="checkbox" id="lido"> Lido?
+    </label><br><br>
+
+    <button type="submit">ADICIONAR</button>
+  </form>
+
+  <br>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Livro</th>
+        <th>Autor</th>
+        <th>Gênero</th>
+        <th>Lido?</th>
+      </tr>
+    </thead>
+    <tbody id="tabelaLivros">
+    
+    </tbody>
+  </table>
+
+  <script>
+    const form = document.getElementById('formLivro');
+    const tabela = document.getElementById('tabelaLivros');
+
+    form.onsubmit = function(event) {
+      event.preventDefault(); 
+
+      
+      const tituloVal = document.getElementById('titulo').value;
+      const autorVal = document.getElementById('autor').value;
+      const generoVal = document.getElementById('genero').value;
+      const lidoVal = document.getElementById('lido').checked ? '[x] Sim' : '[ ] Não';
+
+      
+      const novaLinha = document.createElement('tr');
+      novaLinha.innerHTML = `
+        <td>${tituloVal}</td>
+        <td>${autorVal}</td>
+        <td>${generoVal}</td>
+        <td>${lidoVal}</td>F
+      `;
+
+      
+      tabela.appendChild(novaLinha);
+      form.reset();
+    };
+  </script>
+
+</body>
+</html>
